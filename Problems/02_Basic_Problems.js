@@ -45,3 +45,87 @@ function reverseNumber(num){
 // console.log(res);
 // Time Complexity => O(N) - Depends on Num (Number of iteration)
 // Space Complexity => O(1) - Only revNum getting change
+
+// Problem No 03. Check if a number is Palindrome or Not
+// Problem Statement: Given an integer N, return true if it is a palindrome else return false.
+
+// Optimal Approach
+
+function checkPalindrome(num){
+    let revNum=0; let temp = num;
+    while(num > 0){
+        let extDigit = num % 10;
+        revNum = (revNum * 10) + extDigit ;
+        num = Math.floor(num / 10); 
+    }
+    if(temp === revNum){
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+// const res = checkPalindrome(121);
+// console.log(res);
+
+// Time Complexity => O(N) - Depends on Num (Number of iteration)
+// Space Complexity => O(1) - Only revNum getting change
+
+// Problem No 04. Find GCD of two numbers
+// Problem Statement: Given two integers N1 and N2, find their greatest common divisor.
+
+// Brute Force Approach
+
+function findGCD(num1, num2){
+    let commonFact =1;
+    for(let i=1; i<=Math.min(num1,num2); i++){
+        if(num1%i === 0 && num2%i === 0){
+            commonFact=i;
+        }
+    }
+    return commonFact;
+}
+// const res = findGCD(20,15);
+// console.log(res);
+// Time Complexity => O(min(num1,num2)) - iterates from 1 to minimum of num1 and num2
+// Space Complexity => O(1) - Only fixed amount of memory is required
+
+// Better Approach 
+
+function findGCDNum(n1, n2){
+    for(let i= Math.min(n1, n2); i>0; i--){
+        if( n1%i ===0 && n2%i ===0){
+            return i;
+        }
+    }
+    return 1;
+}
+// const res = findGCDNum(9,133);
+// console.log(res);
+
+// Time Complexity => O(min(num1,num2)) - iterates from 1 to minimum of num1 and num2 
+// (same but here we gona check in reverse order)
+// Space Complexity => O(1) - Only fixed amount of memory is required
+
+// Optimal Approach
+// Eudclidean Algorithm
+
+function findGCDNumber(n1, n2){
+   while(n1>0 && n2>0){
+    if(n1>n2){
+        n1=n1%n2;
+    }
+    else {
+        n2=n2%n1;
+    }
+   }
+   if(n1 ===0 ){
+    return n2;
+   } 
+   return n1;
+} 
+const res = findGCDNumber(15,20);
+console.log(res);
+
+// Time Complexity => O(min(num1,num2)) - iterates from 1 to minimum of num1 and num2
+// Space Complexity => O(1) - Only fixed amount of memory is required
