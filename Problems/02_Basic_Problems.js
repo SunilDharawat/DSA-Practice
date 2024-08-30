@@ -124,8 +124,56 @@ function findGCDNumber(n1, n2){
    } 
    return n1;
 } 
-const res = findGCDNumber(15,20);
-console.log(res);
+// const res = findGCDNumber(15,20);
+// console.log(res);
 
 // Time Complexity => O(min(num1,num2)) - iterates from 1 to minimum of num1 and num2
 // Space Complexity => O(1) - Only fixed amount of memory is required
+
+// Problem No. 05 Check if a number is Armstrong Number or not
+// Problem Statement: Given an integer N, return true it is an Armstrong number otherwise return false.
+
+function calPower(extDigit, num){
+    let res=1;
+    let count = 0;
+    while(num > 0){
+        count++;
+        num = Math.floor(num/10);
+    }
+    for(let i=1; i<=count; i++){
+        res = res * extDigit;
+    }
+    return res;
+}
+
+function checkArmstrongNum(num){
+    let result = 0; temp = num;
+    while(num > 0){
+        let extDigit = num % 10;
+        result = result + calPower(extDigit, temp);
+        num = Math.floor(num/10);
+    }
+    if(result === temp){
+        return true;
+    }else{
+        return false;
+    }
+}
+// const res = checkArmstrongNum(10);
+// console.log(res);
+
+// Instead of this code we can write like this
+
+function checkArmstrongNumber(n){
+    let ln = String(n).length;
+    let sum=0;
+    let temp = n;
+    while(n > 0){
+        let extDigit = n % 10;
+        sum = sum + Math.pow(extDigit, ln);
+        n = Math.floor(n/10);
+    }
+    return sum === temp ? true : false;
+}
+const res = checkArmstrongNumber(155);
+console.log(res);
