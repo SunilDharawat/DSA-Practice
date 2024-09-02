@@ -1,3 +1,5 @@
+// ## Learn Basic Maths by using some of problems 
+
 // Problem No 01. Count digits in a number
 // Problem Statement: Given an integer N, return the number of digits in N.
 
@@ -161,6 +163,8 @@ function checkArmstrongNum(num){
 }
 // const res = checkArmstrongNum(10);
 // console.log(res);
+// Time Complexity - O(n), N number of input
+// Space Complexity - O(1) Constant amount of additional memory for the reversed number
 
 // Instead of this code we can write like this
 
@@ -175,5 +179,67 @@ function checkArmstrongNumber(n){
     }
     return sum === temp ? true : false;
 }
-const res = checkArmstrongNumber(155);
+// const res = checkArmstrongNumber(155);
+// console.log(res);
+
+// Problem No. 06 Print all Divisors of a given Number
+// Problem Statement: Given an integer N, return all divisors of N.
+
+function divisorInteger(num){
+    let arr = [];
+    let sqrtN = parseInt(Math.sqrt(num)); 
+    // console.log(sqrtN); output = 3
+    for(let i =1; i<=sqrtN; i++){
+        if(num % i === 0){
+            arr.push(i);
+        }
+        if(i !== num/i){
+            // console.log(num/i);
+            arr.push(num/i);
+        }
+    }
+    return arr.sort((a,b)=> a-b); // sorting array
+}
+// const res = divisorInteger(12);
+// console.log(res);
+
+// Time Complexity - O(sqrt(n)) n is number input
+// Space Complexity - O(2*sprt(n)) we are store divisor input to return so the length of arr is 2*sqrt(n)
+
+// Problem No. 07 Check if a number is prime or not
+// Problem Statement: Given an integer N, check whether it is prime or not.
+// A prime number is a number that is only divisible by 1 and itself and the total number of divisors is 2.
+
+function checkPrime(num){
+    if(num <= 1){
+        return false;
+    }
+    for(let i=2; i<num; i++){
+       if(num % i === 0){
+        return false;
+       }
+    }
+    return true;
+}
+// const res = checkPrime(13);
+// console.log(res);
+
+// Time Complexity - O(n) n is the input number as we itreate from 2 to number
+// Space Complexity - O(1) fixed amount of space used
+
+// Efficient Approach
+function checkPrime(num){
+    if(num <= 1){
+        return false;
+    }
+    for(let i=2; i<=Math.sqrt(num); i++){
+       if(num % i === 0){
+        return false;
+       }
+    }
+    return true;
+}
+const res = checkPrime(13);
 console.log(res);
+// Time Complexity - O(sqrt(n)) n is the input number as we itreate from 2 to sqrt(n)
+// Space Complexity - O(1) fixed amount of space used
